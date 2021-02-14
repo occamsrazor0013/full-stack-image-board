@@ -5,9 +5,9 @@ const db = require('./connection');
 
 {/*join message schema*/}
 const schema = Joi.object().keys({
-    username: Joi.string().required(),
-    subject: Joi.string().required(),
-    message: Joi.string().max(500).required(),
+    username: Joi.string(),
+    subject: Joi.string(),
+    message: Joi.string(),
     imageURL: Joi.string().uri()
 })
 
