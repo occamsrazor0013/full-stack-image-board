@@ -1,7 +1,7 @@
 //react packages used
 import React, { useState, useEffect } from 'react';
 import './Messages.css'
-import { useForm } from "react-hook-form";
+import { useForm} from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
 {/*after strugging with the problem input fields losing focus after a single character input, I gave up and used react-hook-form package*/}
@@ -62,7 +62,7 @@ function Messages() {
                 <li class="media" key={message._id}>
                     <img class="mr-3 mb-3 mt-3" src={message.imageURL}></img>
                     <div class="media-body">
-                        <h5 class="mt-2">Name: {message.username}</h5>
+                        <h5 class="mt-2">Username: {message.username}</h5>
                         <h5>Subject: {message.subject}</h5>
                         <h5>Message:</h5>
                         {message.message}
@@ -108,7 +108,7 @@ function Messages() {
                     ref={register({
                         maxLength: {
                             value: 49,
-                            message: "Username must be less than 49 characters"
+                            message: "Subject must be less than 49 characters"
                             }   
                         }
                     )}
@@ -179,7 +179,6 @@ function Messages() {
                 
                     {/*button that toggles visibility of message form, I used a ternary operator with the state of toggle*/}
                     {toggle ? <MessageForm /> : null}
-                    
                     {/*messages component*/}
                     <ActualMessages />
             </div>

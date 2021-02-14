@@ -1,13 +1,14 @@
 {/*install joi, use connection to mongodb*/}
+const { required } = require('joi');
 const Joi = require('joi');
 const db = require('./connection');
 {/*allow to reuse mongodb connection across node*/}
 
 {/*join message schema*/}
 const schema = Joi.object().keys({
-    username: Joi.string(),
-    subject: Joi.string(),
-    message: Joi.string(),
+    username: Joi.string().required(),
+    subject: Joi.string().required(),
+    message: Joi.string().required(),
     imageURL: Joi.string().uri()
 })
 
@@ -25,6 +26,8 @@ function getAll(){
 {/*otherwise reject it asynchronously */}
 function create(message){
     if(!message.username) message.username = 'Anon';
+    if(!message.subject) message.subject = '';
+    if(!message.message) message.umessage = '';
     
     const validation = schema.validate(message);
     
