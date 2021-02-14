@@ -7,8 +7,8 @@ const db = require('./connection');
 {/*join message schema*/}
 const schema = Joi.object().keys({
     username: Joi.string().required(),
-    subject: Joi.string().required(),
-    message: Joi.string().required(),
+    subject: Joi.string(),
+    message: Joi.string(),
     imageURL: Joi.string().uri()
 })
 
@@ -26,8 +26,8 @@ function getAll(){
 {/*otherwise reject it asynchronously */}
 function create(message){
     if(!message.username) message.username = 'Anon';
-    if(!message.subject) message.subject = '';
-    if(!message.message) message.umessage = '';
+    if(!message.subject) message.subject = ' ';
+    if(!message.message) message.message = ' ';
     
     const validation = schema.validate(message);
     
